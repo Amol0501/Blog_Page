@@ -4,6 +4,7 @@ import {FaPencilAlt} from "react-icons/fa"
 import toast, { Toaster } from 'react-hot-toast';
 
 const Home = () => {
+  const URL = "https://blog-page-5qk8.onrender.com/";
   const [posts, setpost] = useState([]);
   const [editPost, setEditPost] = useState(false);
   const [editId, setEditId] = useState("");
@@ -15,13 +16,13 @@ const Home = () => {
   }, [posts])
 
   const getPost = async () => {
-    const response = await fetch("http://localhost:5000/get-blog");
+    const response = await fetch(`${URL}get-blog`);
     const data = await response.json();
     setpost(data.blogs);
   }
 
   const deleteHandler = async (id) => {
-    const response = await fetch(`http://localhost:5000/delete-blog/${id}`, {
+    const response = await fetch(`${URL}delete-blog/${id}`, {
       method: "DELETE",
     });
     if(response.status === 200){
@@ -34,7 +35,7 @@ const Home = () => {
   
   const updateHandler = async (id) => {
     console.log(title, description);
-    const response = await fetch(`http://localhost:5000/update-blog/${id}`, {
+    const response = await fetch(`${URL}update-blog/${id}`, {
       method: "PUT",
       headers: {
         "Content-type" : "application/json",

@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 
 const Create = () => {
-  
+  const URL = "https://blog-page-5qk8.onrender.com/";
   const navigate = useNavigate();
   
   const submitHandler = async(e) => {
@@ -15,7 +15,7 @@ const Create = () => {
       description
     }
 
-    const response = await fetch("http://localhost:5000/post-blog", {
+    const response = await fetch(`${URL}post-blog`, {
       method: "POST",
       headers: {
         "Content-type" : "application/json",
